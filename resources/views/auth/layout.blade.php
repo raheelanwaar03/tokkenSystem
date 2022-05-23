@@ -9,5 +9,6 @@
 </head>
 <body>
     @yield('content')
+    <x-alert/>
 </body>
 </html>
