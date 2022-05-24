@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Counter;
 use App\Models\Department;
+use App\Models\Option;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -110,6 +111,12 @@ class clean extends Command
         $user->email = "raheel318@gmail.com";
         $user->password = bcrypt('asdfasdf');
         $user->save();
+
+        //create tokken for new user
+        $option = new Option();
+        $option->name = 'token';
+        $option->value = 0;
+        $option->save();
 
         return 0;
     }
