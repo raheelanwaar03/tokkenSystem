@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
+            $table->foreignId('counter_id')->constrained()->onDelete('cascade');
+            $table->string('token');
+            $table->string('status');
             $table->timestamps();
         });
     }

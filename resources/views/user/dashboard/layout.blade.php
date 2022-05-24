@@ -16,7 +16,7 @@
                   <ul class="nav-list">
                     <li class="nav-list-item"><a href="{{ route('user.dashboardindex.index') }}" class="text-light">Dashboard</a></li>
                     <li class="nav-list-item mt-3"><a href="{{ route('user.dashboardCounter.index') }}" class="text-light">Counter</a></li>
-                    <li class="nav-list-item mt-3"><a href="#" class="text-light">Tokken</a></li>
+                    <li class="nav-list-item mt-3"><a href="{{ route('user.dashboardToken.index') }}" class="text-light">Tokken</a></li>
                     <li class="nav-list-item mt-5">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

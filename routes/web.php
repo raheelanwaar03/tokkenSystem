@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\userController;
@@ -17,6 +18,8 @@ Route::prefix('user/dashboard')->name('user.dashboard')->middleware(['auth','use
     Route::resource('index', userController::class);
     Route::resource('Department', DepartmentController::class);
     Route::resource('Counter', CounterController::class);
+    Route::get('generateTokken/{Department}',[TokenController::class,'generate'])->name('generateToken');
+    Route::resource('Token', TokenController::class);
 
 });
 

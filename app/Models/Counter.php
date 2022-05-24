@@ -11,7 +11,7 @@ class Counter extends Model
 
     public function FunctionName()
     {
-       return $this->hasMany(Department::class);
+       return $this->belongsTo(Department::class);
     }
 
 }

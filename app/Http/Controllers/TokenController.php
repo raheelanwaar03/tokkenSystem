@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counter;
+use App\Models\Department;
 use App\Models\Token;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,34 @@ class TokenController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::get();
+        return view('user.dashboard.token_index', compact('departments'));
+    }
+
+
+    //generate token
+    public function generate(Request $request,$department)
+    {
+         $freshToken = generateToken();
+        $department = Department::find($department);
+
+        $token = new Token();
+        $token->department_id = $department->id;
+        $token->token = $freshToken;
+
+        // getting this department id counter if he is free or active
+        $counter = Counter::where('department_id', $department->id)->first();
+        $token->counter_id = $counter->id;
+        if ($counter->status == "active") {
+            $counter->status = 'busy';
+            $counter->save();
+            $token->status = 'active';
+        } else {
+            $token->status = 'queue';
+        }
+        $token->save();
+
+        return $freshToken;
     }
 
     /**
