@@ -10,8 +10,9 @@
 
     @foreach ($departments as $department)
     <div class="jumbotron">
-        <h3>{{ $department->name }}</h3>
-        <p>{{ $department->description }}</p>
+        <h3>Department:{{ $department->name }}</h3>
+        <p>Details:{{ $department->description }}</p>
+        <a href="{{ route('user.dashboardDepartment.edit',['Department'=>$department->id]) }}" class="btn btn-primary">Edit</a>
     </div>
 
     @endforeach
