@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>@yield('title')</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-              <nav class="navbar navbar-light bg-primary">
-                  <ul class="nav-list">
-                      <li class="nav-list-item"><a href="#" class="text-light">Dashboard</a></li>
-                  </ul>
-              </nav>
-            </div>
-            <div class="col-md-9">
-                @yield('content')
-            </div>
-        </div>
+@extends('user.dashboard.layout')
+
+@section('title')
+    Dashboard
+@endsection
+
+@section('content')
+    <h1>Welcome {{ auth()->user()->name }}</h1>
+
+
+    @foreach ($departments as $department)
+    <div class="jumbotron">
+        <h3>{{ $department->name }}</h3>
+        <p>{{ $department->description }}</p>
     </div>
-</body>
-</html>
+
+    @endforeach
+
+@endsection
